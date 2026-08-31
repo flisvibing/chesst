@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in — Chesst</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <div id="nav"></div>
+    <main class="auth-wrap">
+      <div class="card auth-card">
+        <h1>Welcome back</h1>
+        <p class="sub">Sign in to access your games and analyses.</p>
+        <div id="alert"></div>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="identifier">Email or username</label>
+            <input class="input" id="identifier" type="text" required autocomplete="username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input class="input" id="password" type="password" required autocomplete="current-password">
+          </div>
+          <button class="btn btn-primary" id="submit" style="width:100%;">Sign in</button>
+        </form>
+        <p class="auth-foot">No account? <a href="register.html">Create one</a></p>
+      </div>
+    </main>
+    <div id="footer-mount"></div>
+  </div>
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

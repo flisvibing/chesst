@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — Chesst</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <div id="nav"></div>
+    <main class="container container-narrow">
+      <h1 style="font-size:22px; margin-bottom:16px;">Settings</h1>
+      <div class="card" style="margin-bottom:16px;">
+        <h3 class="card-title">Account</h3>
+        <div id="account-info"><div class="center-load"><span class="spinner"></span></div></div>
+      </div>
+      <div class="card" style="margin-bottom:16px;">
+        <h3 class="card-title">External accounts</h3>
+        <p style="color:var(--fg-soft); font-size:13px; margin-bottom:12px;">Import your recent games from Lichess or Chess.com by username.</p>
+        <div id="integrations"></div>
+      </div>
+      <div class="card" style="margin-bottom:16px;">
+        <h3 class="card-title">API endpoint</h3>
+        <p style="color:var(--fg-soft); font-size:13px; margin-bottom:10px;">The backend URL used for API calls. Defaults to the Render deployment.</p>
+        <div class="form-group">
+          <input class="input" id="api-base">
+          <div class="hint">For local development, set to <code>http://localhost:8080</code>. Reload the page after changing.</div>
+        </div>
+        <button class="btn btn-sm" id="save-api">Save</button>
+      </div>
+      <div class="card">
+        <h3 class="card-title">Theme</h3>
+        <p style="color:var(--fg-soft); font-size:13px; margin-bottom:10px;">Switch between light and dark.</p>
+        <button class="btn btn-sm" id="toggle-theme">Toggle theme</button>
+      </div>
+    </main>
+    <div id="footer-mount"></div>
+  </div>
+  <script type="module" src="js/settings.js"></script>
+</body>
+</html>

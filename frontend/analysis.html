@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis — Chesst</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css" crossorigin="anonymous">
+</head>
+<body>
+  <div class="app">
+    <div id="nav"></div>
+    <main class="container">
+      <div class="board-toolbar">
+        <div id="opening-badge"></div>
+        <div style="flex:1"></div>
+        <button class="btn btn-sm" id="btn-load">Load PGN/FEN</button>
+        <button class="btn btn-sm" id="btn-save">Save</button>
+        <button class="btn btn-sm btn-ghost" id="btn-flip" title="Flip board">⇅</button>
+        <button class="btn btn-sm btn-ghost" id="btn-reset" title="Reset">↺</button>
+      </div>
+      <div class="analysis-layout">
+        <div>
+          <div class="board-wrap">
+            <div class="eval-bar" id="eval-bar">
+              <div class="white-fill" style="height:50%"></div>
+              <div class="label" id="eval-label">0.0</div>
+            </div>
+            <div class="board-container">
+              <div id="board" style="width:100%"></div>
+            </div>
+          </div>
+          <div class="move-nav">
+            <button class="btn btn-sm btn-icon" id="nav-first" title="Start">⏮</button>
+            <button class="btn btn-sm btn-icon" id="nav-prev" title="Previous">◀</button>
+            <span id="move-counter" style="min-width:110px; text-align:center; color: var(--fg-soft); font-size: 13px; font-family: var(--mono);">Start</span>
+            <button class="btn btn-sm btn-icon" id="nav-next" title="Next">▶</button>
+            <button class="btn btn-sm btn-icon" id="nav-last" title="End">⏭</button>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-tabs">
+            <div class="panel-tab active" data-tab="moves">Moves</div>
+            <div class="panel-tab" data-tab="engine">Engine</div>
+            <div class="panel-tab" data-tab="info">Info</div>
+          </div>
+          <div class="panel-body" id="panel-moves">
+            <div class="move-list" id="move-list">
+              <div class="empty-state"><div class="icon">♟</div>No moves yet. Play on the board or load a PGN/FEN.</div>
+            </div>
+          </div>
+          <div class="panel-body" id="panel-engine" style="display:none;"></div>
+          <div class="panel-body" id="panel-info" style="display:none;"></div>
+        </div>
+      </div>
+    </main>
+    <div id="footer-mount"></div>
+  </div>
+
+  <div class="modal-backdrop" id="load-modal" style="display:none;">
+    <div class="modal">
+      <div class="modal-head"><h3>Load game or position</h3><button class="close-btn" id="load-close">×</button></div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="pgn-input">PGN</label>
+          <textarea class="textarea" id="pgn-input" rows="6" placeholder="1. e4 e5 2. Nf3 Nc6 ..."></textarea>
+          <div style="display:flex; gap:8px; margin-top:8px;">
+            <button class="btn btn-sm" id="load-pgn">Load PGN</button>
+            <button class="btn btn-sm btn-ghost" id="insert-sample">Insert sample</button>
+          </div>
+        </div>
+        <hr style="border:none; border-top:1px solid var(--border); margin:16px 0;">
+        <div class="form-group">
+          <label for="fen-input">FEN</label>
+          <input class="input" id="fen-input" placeholder="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1">
+          <button class="btn btn-sm" id="load-fen" style="margin-top:8px;">Load FEN</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="save-modal" style="display:none;">
+    <div class="modal">
+      <div class="modal-head"><h3>Save to archive</h3><button class="close-btn" id="save-close">×</button></div>
+      <div class="modal-body" id="save-body"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://unpkg.com/chess.js@1.0.0-beta.8/dist/cjs/chess.js"></script>
+  <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js" crossorigin="anonymous"></script>
+  <script type="module" src="js/analysis.js"></script>
+</body>
+</html>

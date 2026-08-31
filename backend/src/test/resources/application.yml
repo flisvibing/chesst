@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:chesst-test;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  flyway:
+    enabled: false
+  mail:
+    host: localhost
+    port: 3025
+
+app:
+  cors:
+    allowed-origins: http://localhost:5500
+  jwt:
+    secret: test-secret-test-secret-test-secret-test-secret-test-secret-1234
+    access-token-ttl-minutes: 60
+    refresh-token-ttl-days: 30
+    issuer: chesst-test
+  email:
+    from: test@chesst.app
+    verification-required: true
+    log-codes-when-no-smtp: true
+  stockfish:
+    binary-path: /usr/games/stockfish
+    depth: 8
+    movetime-ms: 500
+    max-concurrent: 2
+  lichess:
+    base-url: https://lichess.org/api
+  chesscom:
+    base-url: https://api.chess.com/pub

@@ -1,0 +1,25 @@
+# Backend
+target/
+*.class
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/application*.yml
+!**/src/test/**/application*.yml
+.idea/
+*.iml
+.vscode/
+*.log
+.env
+.env.local
+
+# Frontend
+node_modules/
+dist/
+.netlify/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+
+# Sandbox mount (not part of the project)
+upload/

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archive — Chesst</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <div id="nav"></div>
+    <main class="container">
+      <h1 style="font-size:22px; margin-bottom:4px;">Game archive</h1>
+      <p style="color:var(--fg-soft); margin-bottom:14px;" id="archive-sub">Your saved games.</p>
+      <div class="filter-bar">
+        <input class="input" id="search" placeholder="Search by player, event, opening…">
+        <select class="select" id="filter-color">
+          <option value="">Any color</option>
+          <option value="white">As White</option>
+          <option value="black">As Black</option>
+        </select>
+        <select class="select" id="filter-result">
+          <option value="">Any result</option>
+          <option value="1-0">White wins</option>
+          <option value="0-1">Black wins</option>
+          <option value="1/2-1/2">Draw</option>
+        </select>
+      </div>
+      <div class="game-list" id="game-list">
+        <div class="center-load"><span class="spinner"></span> Loading…</div>
+      </div>
+    </main>
+    <div id="footer-mount"></div>
+  </div>
+  <script type="module" src="js/archive.js"></script>
+</body>
+</html>

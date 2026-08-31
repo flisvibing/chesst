@@ -1,0 +1,22 @@
+# Netlify site configuration
+# Docs: https://docs.netlify.com/configure-builds/file-based-configuration/
+#
+# This file lives inside frontend/ so the frontend folder is self-contained.
+# When deploying from a monorepo, set Netlify's "Base directory" to `frontend`.
+# When deploying frontend/ as its own repo, no extra setup is needed.
+
+[build]
+  publish = "."
+  command = ""
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

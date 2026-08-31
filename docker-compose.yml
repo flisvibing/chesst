@@ -1,0 +1,41 @@
+# Chesst — full stack (backend + postgres)
+# For local development. Frontend runs separately (see frontend/README.md).
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: chesst
+      POSTGRES_USER: chesst
+      POSTGRES_PASSWORD: chesst
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chesst"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/chesst
+      DATABASE_USERNAME: chesst
+      DATABASE_PASSWORD: chesst
+      JWT_SECRET: change-this-to-a-long-random-base64-secret-key-at-least-256-bits-long-please
+      CORS_ORIGINS: http://localhost:5500,https://chesst.netlify.app,https://chesst.js.org
+      STOCKFISH_PATH: /usr/games/stockfish
+      MAIL_USERNAME: ""
+      MAIL_PASSWORD: ""
+      PORT: 8080
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:

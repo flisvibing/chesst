@@ -1,0 +1,43 @@
+# Render backend service definition
+# Docs: https://render.com/docs/blueprint-spec
+#
+# This file lives inside backend/ so the backend folder is self-contained.
+# When deploying from a monorepo, set Render's "Root Directory" to `backend`.
+# When deploying backend/ as its own repo, no extra setup is needed — Render
+# will find this render.yaml at the repo root automatically.
+
+services:
+  - type: web
+    name: chesst-backend
+    runtime: docker
+    plan: free
+    # Paths are relative to this file's location (backend/).
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: chesst-db
+          property: connectionString
+      - key: DATABASE_USERNAME
+        value: chesst
+      - key: DATABASE_PASSWORD
+        value: chesst
+      - key: JWT_SECRET
+        sync: false  # set manually in Render dashboard
+      - key: CORS_ORIGINS
+        value: https://chesst.netlify.app,https://chesst.js.org
+      - key: STOCKFISH_PATH
+        value: /usr/games/stockfish
+      - key: MAIL_USERNAME
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false
+      - key: PORT
+        value: 8080
+
+databases:
+  - name: chesst-db
+    plan: free
+    ipAllowList: []

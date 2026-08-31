@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chesst — Analyze, study, improve</title>
+  <meta name="description" content="A professional chess analysis platform. Analyze games with Stockfish, study openings, track your progress.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <div id="nav"></div>
+    <main class="container" style="text-align:center; padding-top: 60px;">
+      <h1 style="font-size: 36px; margin-bottom: 12px;">Chesst</h1>
+      <p style="font-size: 18px; color: var(--fg-soft); margin-bottom: 32px; max-width: 560px; margin-left:auto; margin-right:auto;">
+        Analyze your games with a real Stockfish engine, study openings from the complete ECO database, and build your repertoire.
+      </p>
+      <div style="display:flex; gap:12px; justify-content:center; margin-bottom: 48px;">
+        <a href="analysis.html" class="btn btn-primary" style="padding: 12px 24px; font-size: 16px;">Start analyzing</a>
+        <a href="openings.html" class="btn" style="padding: 12px 24px; font-size: 16px;">Browse openings</a>
+      </div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; max-width: 900px; margin: 0 auto; text-align:left;">
+        <div class="card">
+          <div style="font-size: 24px; margin-bottom: 8px;">⚙️</div>
+          <h3 style="font-size: 16px; margin-bottom: 6px;">Real Stockfish</h3>
+          <p style="color: var(--fg-soft); font-size: 14px;">Server-side UCI engine. Best move, evaluation, blunder detection — not fake.</p>
+        </div>
+        <div class="card">
+          <div style="font-size: 24px; margin-bottom: 8px;">📚</div>
+          <h3 style="font-size: 16px; margin-bottom: 6px;">220 ECO openings</h3>
+          <p style="color: var(--fg-soft); font-size: 14px;">Full A–E coverage with win rates. Study any line in the analyzer.</p>
+        </div>
+        <div class="card">
+          <div style="font-size: 24px; margin-bottom: 8px;">🔗</div>
+          <h3 style="font-size: 16px; margin-bottom: 6px;">Lichess & Chess.com</h3>
+          <p style="color: var(--fg-soft); font-size: 14px;">Import your games by username. No manual PGN export needed.</p>
+        </div>
+        <div class="card">
+          <div style="font-size: 24px; margin-bottom: 8px;">🔒</div>
+          <h3 style="font-size: 16px; margin-bottom: 6px;">Secure & private</h3>
+          <p style="color: var(--fg-soft); font-size: 14px;">JWT auth, email verification, your games stay yours.</p>
+        </div>
+      </div>
+    </main>
+    <div id="footer-mount"></div>
+  </div>
+  <script type="module" src="js/home.js"></script>
+</body>
+</html>

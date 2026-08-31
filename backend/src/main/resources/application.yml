@@ -1,0 +1,69 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  application:
+    name: chesst-backend
+
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/chesst}
+    username: ${DATABASE_USERNAME:chesst}
+    password: ${DATABASE_PASSWORD:chesst}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+app:
+  cors:
+    allowed-origins: ${CORS_ORIGINS:https://chesst.netlify.app,https://chesst.js.org,http://localhost:5500,http://127.0.0.1:5500}
+  jwt:
+    secret: ${JWT_SECRET:change-this-to-a-long-random-base64-secret-key-at-least-256-bits-long-please}
+    access-token-ttl-minutes: 60
+    refresh-token-ttl-days: 30
+    issuer: chesst
+  email:
+    from: ${MAIL_FROM:Chesst <no-reply@chesst.app>}
+    verification-required: true
+    log-codes-when-no-smtp: true
+  stockfish:
+    binary-path: ${STOCKFISH_PATH:/usr/games/stockfish}
+    depth: 16
+    movetime-ms: 3000
+    max-concurrent: 4
+  lichess:
+    base-url: https://lichess.org/api
+  chesscom:
+    base-url: https://api.chess.com/pub
+
+logging:
+  level:
+    com.chesst: INFO
+    org.hibernate.SQL: WARN
+    org.flywaydb: INFO
